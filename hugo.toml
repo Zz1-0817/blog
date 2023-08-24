@@ -1,4 +1,4 @@
-baseURL = 'https://localhost:1313'
+baseURL = 'http://localhost:1313'
 languageCode = 'en-us'
 title = "Zz1's temporary blog"
 theme = 'hugo-book'
@@ -17,7 +17,7 @@ enableGitInfo = true
 [languages.zh]
   languageName = 'Chinese'
   contentDir = 'content/content.zh'
-  weight = 3
+  weight = 1
 
 [languages.en]
   languageName = 'English'
@@ -27,4 +27,4 @@ enableGitInfo = true
 [languages.ru]
   languageName = 'Russian'
   contentDir = 'content/content.ru'
-  weight = 1
+  weight = 3

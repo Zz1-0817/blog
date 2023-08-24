@@ -62,12 +62,12 @@
      \]
      且, \( f(z) \) 有导数的条件下, 有
      \[
-       f'(z) = a + ib = \frac{\partial u}{\partial x} + i \frac{\partial v}{\parital x} = \frac{\partial v}{\partial y} - i \frac{\partial u}{\partial y}.
+       f'(z) = a + ib = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} = \frac{\partial v}{\partial y} - i \frac{\partial u}{\partial y}.
      \]
-     注: 将 \( z, \bar z \) 看成独立变量, 记 \( \frac{\partial f}{\partial z} = \frac{1}{2} \left( \frac{\partial f}{\partial x} - i\frac{\partial f}{\partial y} \right), \frac{\partial f}{\partial \bar z} = \frac{1}{2} \left( \frac{\partial f}{\partial x} + i\frac{\partial f}{\partial y} \right) \), 那么 Cauchy-Riemann 条件等价于 \( \frac{\partial f}{\partial \bar z} = 0 \), 而 \( f'(z) = \frac{\partial f}{\partial z} \).
-
-
-
+     #+attr_shortcode: info
+     #+begin_hint
+    将 \( z, \bar z \) 看成独立变量, 记 \( \frac{\partial f}{\partial z} = \frac{1}{2} \left( \frac{\partial f}{\partial x} - i\frac{\partial f}{\partial y} \right), \frac{\partial f}{\partial \bar z} = \frac{1}{2} \left( \frac{\partial f}{\partial x} + i\frac{\partial f}{\partial y} \right) \), 那么 Cauchy-Riemann 条件等价于 \( \frac{\partial f}{\partial \bar z} = 0 \), 而 \( f'(z) = \frac{\partial f}{\partial z} \).
+     #+end_hint
 
 * 解析函数的性质                                                   :property:
   :PROPERTIES:
@@ -75,6 +75,23 @@
   :EXPORT_HUGO_WEIGHT: auto
   :END:
 ** 解析函数的性质
+*** Cauchy 定理
+    设 \( f(z) \) 是单连通区域 \( D \) 内的解析函数, 那么
+    设 \( C \) 是 \( D \) 内的一条简单闭合曲线, 那么
+    \[
+	\int_C f(z) \mathrm{d} z = 0
+    \]
+*** Cauchy 公式
+    设 \( D \) 是以有限条简单闭合曲线为边界的有界区域. 设 \( f(z) \) 在 \( D \) 及 \( C \) 所组成的闭区域 \( \overline D \) 上解析, 那么在 \( D \) 内任意点 \( z \), 下式
+    \[
+    f(z) = \frac{ 1 }{ 2\pi i } \int_C \frac{ f(\xi) }{ \xi - z } \mathrm{d} \mathrm{d} \xi
+    \]
+    称为 Cauchy 公式. 而且, \( f(z) \) 在 \( D \) 内有任意阶导数
+    \[
+    f^{(n)}(z) = \frac{ n! }{ 2\pi i } \int_C \frac{f(\xi)}{(\xi - z)^{n + 1}} \mathrm{d}\xi, \quad n = 1, 2, \cdots
+    \]
+*** Liouville 定理
+    有界整函数一定恒等于整数
 
 * Taylor 展开和 Laurent 展开                                      :expansion:
   :PROPERTIES:
@@ -82,17 +99,234 @@
   :EXPORT_HUGO_WEIGHT: auto
   :END:
 ** Taylor 展开和 Laurent 展开
-
+*** 幂级数收敛半径的求职公式
+    如果下列条件之一成立
+    \begin{aligned}
+      &l = \lim\limits_{n \to +\infty} \left\lvert \frac{ \alpha_{n + 1} }{ \alpha_{n}} \right\rvert,\\
+      &l = \lim\limits_{n \to +\infty} \sqrt[n]{\left\lvert \alpha_n \right\rvert}, \\
+      &l = \overline\lim\limits_{n \to +\infty} \sqrt[n]{\left\lvert \alpha_n \right\rvert},
+    \end{aligned}
+*** Taylor 级数
+    设函数 \( f(z) \) 在圆盘 \( U: \left\lvert z - z_0 \right\rvert < R \) 内解析, 那么在 \( U \) 内有
+    \begin{aligned}
+     f(z) &= f(z_0) + \frac{f'(z_0)}{1!}(z - z_0) + \frac{f^{(2)}(z_0)}{2!}(z - z_0)^2 + \cdots \\
+          &= \frac{f^{(n)}(z_0)}{n!}(z - z_0)^n + \cdots
+    \end{aligned}
+*** Laurent 级数
+    设函数 \( f(z) \) 在圆环 \( D: R_1 < \left\lvert z - z_0 \right\rvert < R_2, ( 0 \leq R_1 < R_2 \leq +\infty \) 内解析, 那么在 \( D \) 内,
+    \[
+     f(z) = \sum_{n = -\infty}^{+\infty}  \alpha_n (z - z_0)^n
+    \]
+    这里
+    \[
+     \alpha_n = \frac{1}{2 \pi i} \int_{\gamma} \frac{f(z)}{(z - z_0)^{n + 1}}\mathrm{d} z, \quad (n = 0, \pm 1, \pm 2)
+    \]
+*** Taylor 级数和 Laurent 级数的唯一性
+    * 在圆盘 \( U: \left\lvert z - z_0 \right\rvert < R \)中, 幂级数 \( \sum_{n = 0}^{\infty} \alpha_n(z - z_0)^{n} \) 的和函数没有另一种形如 \( \sum_{n = 0}^{\infty} \beta_n(z - z_0)^{n} \) 的幂级数.
+    * 在圆环 \( U: 0 < \left\lvert z - z_0 \right\rvert < R \)中, 幂级数 \( \sum_{n = -\infty}^{\infty} \alpha_n(z - z_0)^{n} \) 的和函数没有另一种形如 \( \sum_{n = -\infty}^{\infty} \beta_n(z - z_0)^{n} \) 的幂级数.
+*** 孤立奇点
+    设函数 \( f(z) \) 在去心圆盘 \( D = \left\lbrace 0 < \left\lvert z - z_0 \right\rvert < R \right\rbrace, (0 < R < +\infty) \) 内确定并解析, 而在 \( z_0 \) 不解析, 那么称 \( z_0 \) 为 \( f(z) \) 的孤立奇点. 在 \( D \) 中 \( f(z) \) 有 Laurent 展式
+    \[
+     f(z) = \sum_{n = -\infty}^{+\infty}  \alpha_n (z - z_0)^n
+    \]
+    * \( n = -1, -2, -3, \cdots \) 时, \( \alpha_n = 0 \). 我们称 \( z_0 \) 是一个可去奇点;
+    * 如果有有限个 \( n < 0 \), 使 \( \alpha_n \neq = 0 \), 那么我们称 \( z_0 \) 是一个极点. 若 \( \alpha_m \neq 0, \alpha_n = 0, \forall n < m \) 那么我们称 \( z_0 \) 是一个 \( m \) 阶极点.
+    * 若有无限个 \( n < 0 \), 使 \( \alpha_n \neq 0 \) 我们称 \( z_0 \) 是 \( f(z) \) 的本质奇点.
+*** 判断孤立奇点类型的充要条件
+**** 可去奇点
+     设函数 \( f(z) \) 在 \( 0 < \left\lvert z - z_0 \right\rvert < R, 0 < R \leq +\infty \) 内解析, \( z_0 \) 是 \( f(z) \) 的奇点, 那么以下等价
+     * \( z_0 \) 是 \( f(z) \) 的可去奇点;
+     * 存在极限 \( \lim\limits_{z \to z_0}f(z) = \alpha_0, \alpha_0 \in \mathbb{C} \);
+     * \( f(z) \) 在 \( z_0 \) 的某个邻域内有界.
+**** 极点
+     * 设函数 \( f(z) \) 在 \( 0 < \left\lvert z - z_0 \right\rvert < R, 0 < R \leq +\infty \) 内解析, \( z_0 \) 是 \( f(z) \) 的极点当且仅当 \( \lim\limits_{z \to z_0}f(z) = \infty \).
+     * 设函数 \( f(z) \) 在 \( 0 < \left\lvert z - z_0 \right\rvert < R, 0 < R \leq +\infty \) 内解析, \( z_0 \) 是 \( f(z) \) 的 \( m \) 阶极点当且仅当 \( \lim\limits_{z \to z_0}(z - z_0)^{n}f(z) \) 存在且有限.
+*** 亚纯函数
+    如果一个函数在有限复平面上除去极点外处处解析, 那么这个函数称为亚纯函数.
+    
 * 余数及其应用                                                      :residue:
   :PROPERTIES:
   :EXPORT_FILE_NAME: residue
   :EXPORT_HUGO_WEIGHT: auto
   :END:
 ** 余数及其应用
-
+*** 留数
+     设 \( f(z) \) 在 \( 0 < \left\lvert z - z_0 \right\rvert < R \) 内解析, 其中 \( z_0 \) 为 \( f(z) \) 的孤立奇点. 令 \( 0 < r < R \), 那么下式
+     \[
+      \frac{1}{2 \pi i} \int_{ \left\lvert z - z_0 \right\rvert = r } f(z) \mathrm{d} z
+     \]
+     称为函数 \( f(z) \) 在 \( z_0 \) 处的留数. 并记作 \( \mbox{Res}(f, z_0) \).
+*** 留数的计算
+     容易看出, \( \mbox{Res}(f, z_0) \) 就是 \( f(z) \) 在 \( z_0 \) 的 Laurent 展式中 \( \frac{1}{z - z_0} \) 的系数. 那么, \( z_0 \) 为 \( k \) 阶极点时, 有
+     \[
+      \mbox{Res}(f, z_0) = \frac{1}{(k - 1)!} \lim\limits_{z \to z_0} \frac{\mathrm{d}^{k - 1}\left[(z - z_0)^{k}f(z)\right]}{\mathrm{d}z^{k - 1}} \tag{1}\label{residue}
+     \]
+     #+begin_expand
+     设 \( f(z) = \sum_{n = -\infty}^{\infty} \alpha_n(z - z_0)^{n} \), 那么, 
+     \begin{aligned}
+     \mbox{Res}(f, z_0) &= \frac{1}{2 \pi i} \int_{ \left\lvert z - z_0 \right\rvert = r } f(z) \mathrm{d} z\\
+     &= \frac{1}{2 \pi i}\int_{ \left\lvert z - z_0 \right\rvert = r } \sum_{n = -\infty}^{\infty} \alpha_n(z - z_0)^{n} \mathrm{d} z\\
+     &= \frac{1}{2 \pi i} \sum_{n = -\infty}^{\infty} \int_{ \left\lvert z - z_0 \right\rvert = r }  \alpha_n(z - z_0)^{n} \mathrm{d} z\\
+     &= \alpha_{-1}
+     \end{aligned}
+     同时, 若 \( z_0 \) 是 \( f \) 的 \( k \) 阶极点, 则可以设 \( f(z) = \alpha_{-k}\left(\frac{1}{z - z_0}\right)^{k} + \alpha_{-k + 1}\left(\frac{1}{z - z_0}\right)^{k - 1} + \cdots \), 考虑 \( (z - z_0)^{k}f(z) \), 其 \( k - 1 \) 阶导数为
+     \[
+     (k - 1)!\alpha_{-1} + k! \alpha_0 (z - z_0) + (k + 1)!(z - z_0)^{2} + \cdots
+     \]
+     立刻得到了公式\ref{residue}.
+     #+end_expand
+*** 留数的应用
+    
 * Riemann 映射定理                                          :riemann_theorem:
   :PROPERTIES:
   :EXPORT_FILE_NAME: riemann_theorem
   :EXPORT_HUGO_WEIGHT: auto
   :END:
 ** Riemann 映射定理
+*** 最大模原理
+    如果函数 \( w = f(z) \) 在区域 \( D \) 解析, 并且 \( \left\lvert f(z) \right\rvert \) 在 \( D \) 内某一点达到最大值, 那么 \( f(z) \) 在 \( D \) 内恒等于一常数.
+*** Schwartz 引理
+    设 \( f(z) \) 是在开圆盘 \( \left\lvert z \right\rvert < 1 \) 内的解析函数. 设 \( f(0) = 0 \), 并且当 \( \left\lvert z \right\rvert < 1 \), \( \left\lvert f(z) \right\rvert < 1 \). 那么
+    * 当 \( \left\lvert z \right\rvert < 1 \) 时, \( \left\lvert f(z) \right\rvert \leq \left\lvert z \right\rvert \);
+    * \( \left\lvert f'(0) \right\rvert \leq 1 \);
+    * 如果对于某一复数 \( z_0 ( 0 < \left\lvert z_0 \right\rvert < 1 ), \left\lvert f(z_0) \right\rvert = \left\lvert z_0 \right\rvert \), 或者如果 \( \left\lvert f'(0) \right\rvert = 1 \), 那么在 \( \left\lvert z \right\rvert < 1 \) 内,
+      \[
+      f(z) = \lambda z
+      \]
+      其中 \( \lambda \) 是一复常数, 且 \( \left\lvert \lambda \right\rvert = 1 \).
+*** Riemann 映射定理
+    设 \( D \) 是 \( z \) 平面 \( \mathbb{C} \) 上任何单连通区域, 但不是整个平面; 设 \( z_0 \in D \), 那么有且仅有一个在区域 \( D \) 内的单叶函数 \( w = f(z) \), 满足 \( f(z_0) = 0, f'(z_0) > 0 \), 并且把 \( D \) 保形双射成 \( \left\lvert w \right\rvert < 1 \).
+
+* 样卷                                                               :sample:
+  :PROPERTIES:
+  :EXPORT_FILE_NAME: sample
+  :END:
+  
+  1.1 \( f(z) = x^2 + i y \), 求 \( f'( \frac{1}{z} ) \).
+  #+begin_expand
+  解1. 把 \( f(z) \) 看成关于 \( x, y \) 的函数, 其中 \( z = x + iy \). 那么 \( f(x + iy) =  f(x, y) = x^2 + iy \). 记 \( \overline f = f\left( \frac{1}{z} \right) \), 故
+  \begin{aligned}
+    \overline f(z) &= f\left( \frac{1}{z} \right) = f\left( \frac{1}{x + iy} \right) \\
+    &= f\left( \frac{x}{x^2 + y^2} - i\frac{y}{x^2 + y^2} \right) \\
+    &= f\left( \frac{x}{x^2 + y^2}, -\frac{y}{x^2 + y^2} \right)\\
+    &= \frac{x^2}{\left(x^2 + y^2\right)^2} -i \frac{y}{x^2 + y^2}
+  \end{aligned}
+  根据 Cauchy-Riemann 条件, 上式可微当且仅当
+  \[
+    \frac{\partial}{\partial x} \left(\frac{x^2}{\left(x^2 + y^2\right)^2}\right) = \frac{\partial}{\partial y} \left(\frac{-y}{x^2 + y^2}\right), \quad
+    -\frac{\partial}{\partial y} \left(\frac{x^2}{\left(x^2 + y^2\right)^2}\right) = \frac{\partial}{\partial x} \left(\frac{-y}{x^2 + y^2}\right),
+  \]
+  也就是
+  \[
+    (x - 1)^2 + y^2 = 1, x \neq 0
+  \]
+  故
+  \[
+    f'\left( \frac{1}{z} \right) = \overline f' (z) = \left( \frac{1}{x^2 + y^2} \right)^2 (-x^2 + y^2 +2xy).
+  \]
+  解2. 把 \( z, \bar z \) 看成独立变量, 则
+  \[
+    f(z) = x^2 + i y = \left( \frac{z + \bar z}{2} \right)^2 + i \left( \frac{z - \bar z}{2i} \right) =
+    \frac{1}{4}\left(z^2 +\bar z ^2 + 2z - 2\bar z + 2z \bar z \right)
+  \]
+  此时
+  \[
+    f\left( \frac{1}{z} \right) =
+    \frac{1}{4}\left( \frac{1}{z^2} + \frac{1}{\bar z ^2} + \frac{2}{z} - \frac{2}{\bar z} + \frac{2}{z \bar z} \right)
+  \]
+  由 Cauchy-Riemann 条件有,
+  \[
+    \frac{\partial}{\partial \bar z} f\left( \frac{1}{z} \right) = 0
+  \]
+  此时,
+  \[
+    \frac{\partial}{\partial z}f\left( \frac{1}{z} \right) =
+    -\frac{1}{2z^3} - \frac{1}{2z^2} - \frac{1}{2\bar z z^2}
+  \]
+  #+end_expand
+  1.2 \( \int_{-i}^{i} \left\lvert z \right\rvert \mathrm{d} z = \underline{\hspace{2cm}} \)  ( \( -i \) 到 \( i \) 的直线 ).
+  #+begin_expand
+  令 \( z = it \), 则
+  \[
+     \begin{aligned}
+       \int_{-i}^{i} \left\lvert z \right\rvert \mathrm{d} z &=
+       \int_{-1}^{1} \left\lvert it \right\rvert i\mathrm{d} t\\
+       &= i
+     \end{aligned}
+  \]
+  #+end_expand
+  1.3 \( \frac{z^{2023}}{\cos xz} \) 在 \( z = -2023 + i \) 处展开为泰勒级数的收敛半径.
+  #+begin_expand
+  函数 \( \frac{1}{\cos z} \) 在 \( P = \left\lbrace z \neq \frac{\pi}{2} + n \pi, n \in \mathbb{Z} \right\rbrace \) 时处处可微. 故 \( \frac{1}{\cos z} \) 在 \( z = -2023 + i \) 收敛半径为 \( \mathrm{d}(z, \mathbb{C} / P) \).
+  所以,\( \frac{1}{\cos xz} \) 在 \( x \neq 0 \) 时,  收敛半径 为 \( \frac{ \mathrm{d}(z, P) }{ \left\lvert x \right\rvert } \);  \( x = 0 \) 时, 收敛半径为 \( \infty \).
+  所以, \( \frac{z^{2023}}{\cos xz} \) 同理.
+  #+end_expand
+  1.4 \( z^8 - 4z^5 + z^2 -1 \) 在圆环 \( 1 < z < 2 \) 上的零点个数.
+  #+begin_expand
+  应用鲁歇定理, 当 \( \left\lvert z \right\rvert = 1 \) 时, \( \left\lvert -4z^5 \right\rvert > \left\lvert z^8 + z^2 -1 \right\rvert \), 故 \( z < 1 \) 时, 原多项式解个数为 \( 5 \).
+  同理, \( \left\lvert z \right\rvert = 2 \) 时, \( \left\lvert z^8 \right\rvert > \left\lvert -4z^5 + z^2 -1 \right\rvert \), 故 \( z < 2 \) 时, 原多项式解个数为 \( 8 \).
+  不难看出, \( z = 1 \)时, 原多项式无解. 故答案为 \( 3 \).
+  #+end_expand
+  1.5 给出分段线性函数的定义.
+  #+begin_expand
+  形如下面的函数
+  \[
+    w = \frac{\alpha z + \beta}{\gamma z + \delta}
+  \]
+  其中, \( \alpha, \beta, \gamma, \delta \in \mathbb{C} \).
+  #+end_expand
+  1.6 \( \mbox{Res}\left(z^{2023} \cos ( \frac{1}{z} ), 0\right) = \underline{\hspace{2cm}} \)  .
+  #+begin_expand
+  即求 \( z^{2023}\cos \left( \frac{1}{z} \right) \) Laurent 展式 \( \frac{1}{z} \) 项系数, 而
+  \[
+    z^{2023} \cos ( \frac{1}{z} ) = z^{2023}\left(\sum_{i = 0} \frac{(-1)^{i}}{(2i)!} \left( \frac{1}{z} \right)^{2i}\right)
+  \]
+  故答案应为 \( \frac{1}{2024!} \)
+  #+end_expand
+  2 \( f(z) = \left\lvert z \right\rvert \), 问 \( f \) 是否可微, 求其解析点.
+  #+begin_expand
+  \( f(z) = \sqrt{x^2 + y^2} \).
+  1. \( z \neq 0 \) 时, 由 Cauchy-Riemann 定理知, \( f \) 在 \( \frac{x}{\sqrt{x^2 + y^2}} = 0, \frac{y}{\sqrt{x^2 + y^2}} = 0 \) 有 \( x = y = 0 \) 矛盾. 即, \( f \) 不可微.
+  2. \( z = 0 \) 时, 极限 \( \lim\limits_{z \to 0} \frac{\lvert z \rvert - 0}{z - 0} \) 不存在, 故也不可微.
+  综上, \( \left\lvert f \right\rvert \) 无处可微.
+  #+end_expand
+  3 证明: \( \left\lvert \oint_{ \left\lvert z \right\rvert = 1 } \left( x^{2023} + i y^{2023} \right) \mathrm{d} z \right\rvert \leq 2 \pi \).
+  #+begin_expand
+  \begin{aligned}
+    \left\lvert \oint_{ \left\lvert z \right\rvert = 1 } \left( x^{2023} + i y^{2023} \right) \mathrm{d} z \right\rvert &=
+    \left\lvert \int_{0}^{2\pi} \left(\mathrm{Re}^{2023} \left(e^{it}\right) + i\mathrm{Im}^{2023} \left( e^{it} \right)\right) i e^{it} \mathrm{d} t \right\rvert \\
+    &= \int_{0}^{2 \pi} \left\lvert \mbox{Re}^{2023}\left( e^{it} \right) \right\rvert + \left\lvert \mbox{Im}^{2023}\left( e^{it} \right) \right\rvert \mathrm{d} t\\
+    &= \int_{0}^{2 \pi} \left\lvert \mbox{Re}^{2}\left( e^{it} \right) \right\rvert + \left\lvert \mbox{Im}^{2}\left( e^{it} \right) \right\rvert \mathrm{d} t\\
+    &\leq 2\pi.
+  \end{aligned}
+  #+end_expand
+  4 求 \( \left\lvert z - 1 \right\rvert > 1 \) 时 \( f(z) = \frac{1}{z^2} \) 的洛朗展开.
+  #+begin_expand
+  \begin{aligned}
+    f(z) &= \frac{1}{z^2}\\
+         &= \frac{1}{(z - 1)^2 (1 + \frac{1}{(z - 1)})^2}\\
+         &= \frac{1}{(z - 1)^2} \left(\sum_{i = 0} (-1)^i \left(\frac{1}{z - 1}\right)^{i}\right)^2
+  \end{aligned}
+  #+end_expand
+  5 设整函数 \( f: \mathbb{C} \to D \), \( D \) 为单连通. 若 \( D \neq \mathbb{C} \), 证: \( f \) 为常数.
+  #+begin_expand
+  由 Riemann 映射原理知, 对任意点 \( z \in \mathbb{C} \), 存在单叶函数 \( g \), 使得 \( g \circ f: \mathbb{C} \to O = \left\lbrace z \mid \left\lvert z \right\rvert < 1 \right\rbrace \), 且 \( g'(f(z)) > 0 \).
+  再由 Liouville 定理知, \( (g \circ f)' = 0 \), 这只能 \( f'(z) = 0 \). 再由 \( z \) 的任意性, 知 \( f'(z) = 0 \) 恒成立, 也就是 \( f(z) \) 为常数.
+  #+end_expand
+  6 \( f(z) = \frac{1}{ \cos z - \cos \alpha } \) 在复平面上的所有奇点, 类型, 及其留数.
+  #+begin_expand
+     \( \alpha = n\pi, n \in \mathbb{Z} \) 时, 极限 \( \lim\limits_{z \to \pm \alpha + 2m \pi} \frac{\left(z - (\pm \alpha + 2m\pi)\right)^2}{\cos z - \cos \alpha} \) 存在, 其中 \( m \in \mathbb{Z} \), 故 \( 2m\pi \pm \alpha \) 为二阶极点. 其留数为:
+    \[
+      \lim\limits_{z \to \pm \alpha + 2m \pi} \frac{\mathrm{d}(z - (\pm \alpha + 2m \pi))^2 f(z)}{\mathrm{d} z}
+    \]
+     \( \alpha \neq n\pi, n \in \mathbb{Z} \), 极限 \( \lim\limits_{z \to \pm \alpha + 2m \pi} \frac{(z - (\pm \alpha + 2m\pi))}{\cos z - \cos \alpha} \) 存在, 故 \( \cdots \) 一阶奇点, 其留数为:
+    \[
+      \cdots
+    \]
+  #+end_expand
+  7 求 \( \oint_{ \left\lvert z \right\rvert = 2023 } \tan \pi z \mathrm{d} z \) 和 \( \int_{-\infty}^{\infty} \frac{\cos x}{x^2 + a^2} \mathrm{d} x, (\alpha > 0) \).
+  #+begin_expand
+  1. 设 \( \tan \pi z \) 在 \( z \leq 2023 \) 的奇点集为 \( P \), 那么
+    \( \oint_{ \left\lvert z \right\rvert = 2023 } \tan \pi z \mathrm{d} z = 2\pi i\sum_{p \in P} \mathrm{Res}(f, p) \).
+  2. \( \cdots \).
+  #+end_expand

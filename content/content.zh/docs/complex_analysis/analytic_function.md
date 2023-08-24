@@ -28,4 +28,7 @@ weight = 1002
 \\[
        f'(z) = a + ib = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} = \frac{\partial v}{\partial y} - i \frac{\partial u}{\partial y}.
      \\]
-注: 将 \\( z, \bar z \\) 看成独立变量, 记 \\( \frac{\partial f}{\partial z} = \frac{1}{2} \left( \frac{\partial f}{\partial x} - i\frac{\partial f}{\partial y} \right), \frac{\partial f}{\partial \bar z} = \frac{1}{2} \left( \frac{\partial f}{\partial x} + i\frac{\partial f}{\partial y} \right) \\), 那么 Cauchy-Riemann 条件等价于 \\( \frac{\partial f}{\partial \bar z} = 0 \\), 而 \\( f'(z) = \frac{\partial f}{\partial z} \\).
+
+{{< hint info >}}
+将 \\( z, \bar z \\) 看成独立变量, 记 \\( \frac{\partial f}{\partial z} = \frac{1}{2} \left( \frac{\partial f}{\partial x} - i\frac{\partial f}{\partial y} \right), \frac{\partial f}{\partial \bar z} = \frac{1}{2} \left( \frac{\partial f}{\partial x} + i\frac{\partial f}{\partial y} \right) \\), 那么 Cauchy-Riemann 条件等价于 \\( \frac{\partial f}{\partial \bar z} = 0 \\), 而 \\( f'(z) = \frac{\partial f}{\partial z} \\).
+{{< /hint >}}
